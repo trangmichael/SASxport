@@ -5,6 +5,7 @@
 ##
 
 #' @importFrom Hmisc label label<-
+#' @importFrom utils download.file
 #' @export
 
 read.xport <- function(file,

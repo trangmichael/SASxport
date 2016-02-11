@@ -1,6 +1,7 @@
 ## Simply make this accessible here as a convenience to the user
 
 #' @export
+#' @importFrom utils download.file
 
 lookup.xport <- function(file)
   {
