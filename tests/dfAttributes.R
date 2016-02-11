@@ -5,14 +5,14 @@ Sys.setenv("TZ"="GMT")
 abc.out <- data.frame( x=c(1, 2, NA, NA ), y=c('a', 'B', NA, '*' ) )
 
 ## add a data set label (not used by R)
-label(abc.out, self=TRUE) <- "xxxx data set xxxxx"
+Hmisc::label(abc.out, self=TRUE) <- "xxxx data set xxxxx"
 SAStype(abc.out) <- "normal"
 
 ## add a format specifier (not used by R)
 SASformat(abc.out$x) <- 'date7.'
 
 ## add a variable label (not used by R)
-label(abc.out$y)  <- 'character variable'
+Hmisc::label(abc.out$y)  <- 'character variable'
 
 # create a SAS XPORT file from our local data frame
 write.xport(abc.out,
@@ -29,14 +29,14 @@ abc.in <- read.xport("dfAttributes.xpt",
                      verbose=TRUE)
 
 ## Test that the files are otherwise identical
-label(abc.out, self=TRUE, "MISSING!")
-label(abc.in , self=TRUE, "MISSING!")
+Hmisc::label(abc.out, self=TRUE, "MISSING!")
+Hmisc::label(abc.in , self=TRUE, "MISSING!")
 
 SAStype(abc.out, "MISSING!")
 SAStype(abc.in , "MISSING!")
 
-stopifnot( label  (abc.out, self=TRUE, "MISSING!") ==
-           label  (abc.in,  self=TRUE, "MISSING!") )
+stopifnot( Hmisc::label  (abc.out, self=TRUE, "MISSING!") ==
+           Hmisc::label  (abc.in,  self=TRUE, "MISSING!") )
 
 stopifnot( SAStype(abc.out, "MISSING!") ==
            SAStype(abc.in,  "MISSING!") )

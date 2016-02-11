@@ -8,7 +8,7 @@ abc <- data.frame( x=c(1, 2, NA, NA ), y=c('a', 'B', NA, '*' ) )
 SASformat(abc$x) <- 'date7.'
 
 ## add a variable label (not used by R)
-label(abc$y)  <- 'character variable'
+Hmisc::label(abc$y)  <- 'character variable'
 
 ## create a SAS XPORT file from our local data frame
 write.xport(abc,
