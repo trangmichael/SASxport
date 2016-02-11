@@ -113,14 +113,15 @@ SAStype(abc) <- 'MYTYPE'
 ## verify the additions
 str(abc)
 
-# create a SAS XPORT file 
-write.xport( abc, file="xxx.dat" )
+# create a SAS XPORT file
+tmp <- tempfile(fileext = ".dat")
+write.xport( abc, file = tmp )
 
 # list the contents of the file
-lookup.xport("xxx.dat")
+lookup.xport(tmp)
 
 ## reload the data
-xxx.abc <- read.xport("xxx.dat")
+xxx.abc <- read.xport(tmp)
 
 ## and look at it
 xxx.abc
