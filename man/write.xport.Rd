@@ -104,10 +104,10 @@ abc
 SASformat(abc$x) <- 'date7.'
 
 ## add a variable label (not used by R)
-label(abc$y) <- 'character variable'
+Hmisc::label(abc$y) <- 'character variable'
 
 ## add a dataset label and type
-label(abc) <- 'Simple example'
+Hmisc::label(abc) <- 'Simple example'
 SAStype(abc) <- 'MYTYPE'
 
 ## verify the additions
@@ -127,7 +127,7 @@ xxx.abc <- read.xport(tmp)
 xxx.abc
 
 ## Check the label and type
-label(xxx.abc)
+Hmisc::label(xxx.abc)
 SAStype(xxx.abc)
 
 ## Note that the variable names and SAS dataset type have been converted

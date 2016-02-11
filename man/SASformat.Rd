@@ -82,7 +82,7 @@ SAStype(df)
 
 ## Example showing specification of default return value
 a <- 70
-label(a, default="no label")
+Hmisc::label(a, default="no label")
 }
 \keyword{utilities}
 \keyword{interface}
