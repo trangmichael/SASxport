@@ -1,3 +1,7 @@
+
+#' @importFrom Hmisc label
+#' @export
+
 write.xport <- function(...,
                         list=base::list(),
                         file = stop("'file' must be specified"),
