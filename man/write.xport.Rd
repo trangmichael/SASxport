@@ -118,7 +118,9 @@ tmp <- tempfile(fileext = ".dat")
 write.xport( abc, file = tmp )
 
 # list the contents of the file
+\dontrun{
 lookup.xport(tmp)
+}
 
 ## reload the data
 xxx.abc <- read.xport(tmp)

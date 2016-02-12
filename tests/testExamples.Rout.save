@@ -1,11 +1,13 @@
 
-R version 3.1.0 Patched (2014-05-26 r65771) -- "Spring Dance"
-Copyright (C) 2014 The R Foundation for Statistical Computing
-Platform: x86_64-apple-darwin13.1.0 (64-bit)
+R Under development (unstable) (2016-02-11 r70149) -- "Unsuffered Consequences"
+Copyright (C) 2016 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin13.4.0 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
 Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
 
 R is a collaborative project with many contributors.
 Type 'contributors()' for more information and
@@ -16,25 +18,6 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 Type 'q()' to quit R.
 
 > library(SASxport)
-Loading required package: chron
-Loading required package: Hmisc
-Loading required package: grid
-Loading required package: lattice
-Loading required package: survival
-Loading required package: splines
-Loading required package: Formula
-
-Attaching package: 'Hmisc'
-
-The following objects are masked from 'package:base':
-
-    format.pval, round.POSIXt, trunc.POSIXt, units
-
-
-Loaded SASxport version 1.5.0 (2014-07-21).
-
-  Type `?SASxport' for usage information.
-
 > Sys.setenv("TZ"="GMT")
 > 
 > # run the examples, comparing output
@@ -76,7 +59,7 @@ SASfrm> SAStype(df)
 SASfrm> ## Example showing specification of default return value
 SASfrm> a <- 70
 
-SASfrm> label(a, default="no label")
+SASfrm> Hmisc::label(a, default="no label")
 [1] "no label"
 > example(lookup.xport)
 
@@ -87,7 +70,7 @@ lkp.xp> lookup.xport(alfFile)
 
 SAS xport file
 --------------
-Filename: `/Users/warnes/src/r-gregmisc/SASxport.Rcheck/SASxport/extdata/Alfalfa.xpt'
+Filename: `/Users/gaborcsardi/r_pkgs/SASxport/extdata/Alfalfa.xpt'
 
 Variables in data set `SPEC':
  dataset   name      type format flength fdigits iformat iflength ifdigits
@@ -121,7 +104,7 @@ lkp.xp> w
 
 SAS xport file
 --------------
-Filename: `/Users/warnes/src/r-gregmisc/SASxport.Rcheck/SASxport/extdata/test2.xpt'
+Filename: `/Users/gaborcsardi/r_pkgs/SASxport/extdata/test2.xpt'
 
 Variables in data set `TEST':
  dataset name    type   format flength fdigits iformat iflength ifdigits
@@ -215,7 +198,7 @@ lkp.xp> wS # same display
 
 SAS xport file
 --------------
-Filename: `/Users/warnes/src/r-gregmisc/SASxport.Rcheck/SASxport/extdata/test2.xpt'
+Filename: `/Users/gaborcsardi/r_pkgs/SASxport/extdata/test2.xpt'
 
 Variables in data set `TEST':
  dataset name    type   format flength fdigits iformat iflength ifdigits
@@ -460,14 +443,12 @@ $FORMATS
 rd.xpr> ## Don't show: 
 rd.xpr> stopifnot( is.data.frame(w)==FALSE && is.list(w)==TRUE )
 
-rd.xpr> ## End Don't show
-rd.xpr> 
+rd.xpr> ## End(Don't show)
 rd.xpr> 
 rd.xpr> #### The Hmisc library provides many useful functions for interacting with
 rd.xpr> #### data imported from SAS via read.xport()
-rd.xpr> library(Hmisc)
-
-rd.xpr> describe(w$TEST)   # see labels, format names for dataset test
+rd.xpr> 
+rd.xpr> Hmisc::describe(w$TEST)   # see labels, format names for dataset test
 w$TEST 
 
  5  Variables      2  Observations
@@ -477,8 +458,8 @@ RACE
       1       1       1    blue 
 --------------------------------------------------------------------------------
 AGE : Age at Beginning of Study 
-      n missing  unique    Mean 
-      2       0       2    30.5 
+      n missing  unique    Info    Mean 
+      2       0       2       1    30.5 
 
 30 (1, 50%), 31 (1, 50%) 
 --------------------------------------------------------------------------------
@@ -491,22 +472,22 @@ D1
 DT1  Format:day mon year h:m:s 
                      n                missing                 unique 
                      2                      0                      2 
-                  Mean 
-(18 Apr 2002 09:36:35) 
+                  Info                   Mean 
+                     1 (18 Apr 2002 09:36:35) 
 
 (03 Jun 2002 09:42:07) (1, 50%) 
 (03 Mar 2002 09:31:02) (1, 50%) 
 --------------------------------------------------------------------------------
 T1  Format:h:m:s 
-      n missing  unique    Mean 
-      2       0       2    :01: 
+      n missing  unique    Info    Mean 
+      2       0       2       1    :01: 
 
 11:13:45 (1, 50%), 11:14:13 (1, 50%) 
 --------------------------------------------------------------------------------
 
-rd.xpr> lapply(w, describe)# see descriptive stats in more detail for each variable
+rd.xpr> lapply(w, Hmisc::describe)# see descriptive stats in more detail for each variable
 $TEST
-X[[1]] 
+X[[i]] 
 
  5  Variables      2  Observations
 --------------------------------------------------------------------------------
@@ -515,8 +496,8 @@ RACE
       1       1       1    blue 
 --------------------------------------------------------------------------------
 AGE : Age at Beginning of Study 
-      n missing  unique    Mean 
-      2       0       2    30.5 
+      n missing  unique    Info    Mean 
+      2       0       2       1    30.5 
 
 30 (1, 50%), 31 (1, 50%) 
 --------------------------------------------------------------------------------
@@ -529,81 +510,81 @@ D1
 DT1  Format:day mon year h:m:s 
                      n                missing                 unique 
                      2                      0                      2 
-                  Mean 
-(18 Apr 2002 09:36:35) 
+                  Info                   Mean 
+                     1 (18 Apr 2002 09:36:35) 
 
 (03 Jun 2002 09:42:07) (1, 50%) 
 (03 Mar 2002 09:31:02) (1, 50%) 
 --------------------------------------------------------------------------------
 T1  Format:h:m:s 
-      n missing  unique    Mean 
-      2       0       2    :01: 
+      n missing  unique    Info    Mean 
+      2       0       2       1    :01: 
 
 11:13:45 (1, 50%), 11:14:13 (1, 50%) 
 --------------------------------------------------------------------------------
 
 $Z
-X[[2]] 
+X[[i]] 
 
  6  Variables      100  Observations
 --------------------------------------------------------------------------------
 X3 
-      n missing  unique    Mean     .05     .10     .25     .50     .75     .90 
-    100       0     100  0.5131 0.05585 0.13304 0.26428 0.51257 0.80719 0.93059 
-    .95 
-0.96426 
+      n missing  unique    Info    Mean     .05     .10     .25     .50     .75 
+    100       0     100       1  0.5131 0.05585 0.13304 0.26428 0.51257 0.80719 
+    .90     .95 
+0.93059 0.96426 
 
 lowest : 0.00576 0.01524 0.02380 0.02627 0.05351
 highest: 0.96948 0.97473 0.98010 0.98096 0.99390 
 --------------------------------------------------------------------------------
 X4 
-      n missing  unique    Mean     .05     .10     .25     .50     .75     .90 
-    100       0     100  0.5119 0.06694 0.09393 0.22310 0.49638 0.82109 0.92206 
-    .95 
-0.94963 
+      n missing  unique    Info    Mean     .05     .10     .25     .50     .75 
+    100       0     100       1  0.5119 0.06694 0.09393 0.22310 0.49638 0.82109 
+    .90     .95 
+0.92206 0.94963 
 
 lowest : 0.02636 0.02890 0.02926 0.03010 0.05395
 highest: 0.95790 0.96828 0.97047 0.97466 0.98267 
 --------------------------------------------------------------------------------
 X5 
-      n missing  unique    Mean     .05     .10     .25     .50     .75     .90 
-    100       0     100  0.4888 0.04286 0.06765 0.19898 0.46766 0.77899 0.89237 
-    .95 
-0.91886 
+      n missing  unique    Info    Mean     .05     .10     .25     .50     .75 
+    100       0     100       1  0.4888 0.04286 0.06765 0.19898 0.46766 0.77899 
+    .90     .95 
+0.89237 0.91886 
 
 lowest : 0.004134 0.007872 0.008811 0.038577 0.039260
 highest: 0.933789 0.975597 0.984074 0.996114 0.997253 
 --------------------------------------------------------------------------------
 X6 
-      n missing  unique    Mean     .05     .10     .25     .50     .75     .90 
-    100       0     100  0.4987 0.09022 0.18649 0.26865 0.46423 0.72667 0.85553 
-    .95 
-0.93149 
+      n missing  unique    Info    Mean     .05     .10     .25     .50     .75 
+    100       0     100       1  0.4987 0.09022 0.18649 0.26865 0.46423 0.72667 
+    .90     .95 
+0.85553 0.93149 
 
 lowest : 0.01010 0.01943 0.03064 0.05931 0.08775
 highest: 0.93330 0.96090 0.97310 0.97840 0.99511 
 --------------------------------------------------------------------------------
 X7 
-      n missing  unique    Mean     .05     .10     .25     .50     .75     .90 
-    100       0     100  0.5533  0.0850  0.1474  0.3313  0.5666  0.8120  0.9176 
-    .95 
- 0.9517 
+      n missing  unique    Info    Mean     .05     .10     .25     .50     .75 
+    100       0     100       1  0.5533  0.0850  0.1474  0.3313  0.5666  0.8120 
+    .90     .95 
+ 0.9176  0.9517 
 
 lowest : 0.04201 0.04716 0.04986 0.05864 0.07641
 highest: 0.96377 0.97244 0.97413 0.99318 0.99791 
 --------------------------------------------------------------------------------
 X8 
-      n missing  unique    Mean     .05     .10     .25     .50     .75     .90 
-    100       0     100  0.4809 0.04251 0.06831 0.27122 0.49223 0.71333 0.87322 
-    .95 
-0.91886 
+      n missing  unique    Info    Mean     .05     .10     .25     .50     .75 
+    100       0     100       1  0.4809 0.04251 0.06831 0.27122 0.49223 0.71333 
+    .90     .95 
+0.87322 0.91886 
 
 lowest : 0.007269 0.010586 0.013044 0.018595 0.039906
 highest: 0.930491 0.935669 0.936941 0.958679 0.959636 
 --------------------------------------------------------------------------------
 
 $FORMATS
-X[[3]] 
+X[[i]] 
 
  21  Variables      3  Observations
 --------------------------------------------------------------------------------
@@ -632,32 +613,32 @@ LABEL
 blue (1, 33%), green (1, 33%), purple (1, 33%) 
 --------------------------------------------------------------------------------
 MIN 
-      n missing  unique    Mean 
-      3       0       1       1 
+      n missing  unique    Info    Mean 
+      3       0       1       0       1 
 --------------------------------------------------------------------------------
 MAX 
-      n missing  unique    Mean 
-      3       0       1      40 
+      n missing  unique    Info    Mean 
+      3       0       1       0      40 
 --------------------------------------------------------------------------------
 DEFAULT 
-      n missing  unique    Mean 
-      3       0       1       6 
+      n missing  unique    Info    Mean 
+      3       0       1       0       6 
 --------------------------------------------------------------------------------
 LENGTH 
-      n missing  unique    Mean 
-      3       0       1       6 
+      n missing  unique    Info    Mean 
+      3       0       1       0       6 
 --------------------------------------------------------------------------------
 FUZZ 
-      n missing  unique    Mean 
-      3       0       1   1e-12 
+      n missing  unique    Info    Mean 
+      3       0       1       0   1e-12 
 --------------------------------------------------------------------------------
 MULT 
-      n missing  unique    Mean 
-      3       0       1       0 
+      n missing  unique    Info    Mean 
+      3       0       1       0       0 
 --------------------------------------------------------------------------------
 NOEDIT 
-      n missing  unique    Mean 
-      3       0       1       0 
+      n missing  unique    Info    Mean 
+      3       0       1       0       0 
 --------------------------------------------------------------------------------
 TYPE 
       n missing  unique   value 
@@ -677,9 +658,10 @@ Variables with all observations missing:
 [1] PREFIX   FILL     HLO      DECSEP   DIG3SEP  DATATYPE LANGUAGE
 
 
-rd.xpr> contents(w$TEST)   # another way to see variable attributes
+rd.xpr> Hmisc::contents(w$TEST)   # another way to see variable attributes
 
 Data frame:w$TEST	2 observations and 5 variables    Maximum # NAs:1
+
 
                         Labels Levels   Class Storage NAs
 RACE                                3         integer   1
@@ -694,10 +676,11 @@ T1                                      times  double   0
 |  RACE  |green,blue,purple|
 +--------+-----------------+
 
-rd.xpr> lapply(w, contents)# show contents of individual items in more detail
+rd.xpr> lapply(w, Hmisc::contents)# show contents of individual items in more detail
 $TEST
 
-Data frame:X[[1L]]	2 observations and 5 variables    Maximum # NAs:1
+Data frame:X[[i]]	2 observations and 5 variables    Maximum # NAs:1
+
 
                         Labels Levels   Class Storage NAs
 RACE                                3         integer   1
@@ -714,7 +697,8 @@ T1                                      times  double   0
 
 $Z
 
-Data frame:X[[2L]]	100 observations and 6 variables    Maximum # NAs:0
+Data frame:X[[i]]	100 observations and 6 variables    Maximum # NAs:0
+
 
    Storage
 X3  double
@@ -726,7 +710,8 @@ X8  double
 
 $FORMATS
 
-Data frame:X[[3L]]	3 observations and 21 variables    Maximum # NAs:0
+Data frame:X[[i]]	3 observations and 21 variables    Maximum # NAs:0
+
 
            Storage
 FMTNAME  character
@@ -752,8 +737,7 @@ DATATYPE character
 LANGUAGE character
 
 
-rd.xpr> options(digits=7)  # compare the following matrix with PROC MEANS output
-
+rd.xpr> ## compare the following matrix with PROC MEANS output
 rd.xpr> t(sapply(w$Z, function(x)
 rd.xpr+  c(Mean=mean(x),SD=sqrt(var(x)),Min=min(x),Max=max(x))))
         Mean        SD         Min       Max
@@ -856,10 +840,10 @@ wrt.xp> ## add a format specifier (not used by R)
 wrt.xp> SASformat(abc$x) <- 'date7.'
 
 wrt.xp> ## add a variable label (not used by R)
-wrt.xp> label(abc$y) <- 'character variable'
+wrt.xp> Hmisc::label(abc$y) <- 'character variable'
 
 wrt.xp> ## add a dataset label and type
-wrt.xp> label(abc) <- 'Simple example'
+wrt.xp> Hmisc::label(abc) <- 'Simple example'
 
 wrt.xp> SAStype(abc) <- 'MYTYPE'
 
@@ -868,78 +852,23 @@ wrt.xp> str(abc)
 'data.frame':	4 obs. of  2 variables:
  $ x: atomic  1 2 NA NA
   ..- attr(*, "SASformat")= chr "date7."
- $ y: Factor w/ 3 levels "*","B","a": 3 2 NA 1
+ $ y: Factor w/ 3 levels "*","a","B": 2 3 NA 1
   ..- attr(*, "label")= chr "character variable"
  - attr(*, "label")= chr "Simple example"
  - attr(*, "SAStype")= chr "MYTYPE"
 
-wrt.xp> # create a SAS XPORT file 
-wrt.xp> write.xport( abc, file="xxx.dat" )
+wrt.xp> # create a SAS XPORT file
+wrt.xp> tmp <- tempfile(fileext = ".dat")
+
+wrt.xp> write.xport( abc, file = tmp )
 
 wrt.xp> # list the contents of the file
-wrt.xp> lookup.xport("xxx.dat")
-
-SAS xport file
---------------
-Filename: `xxx.dat'
-
-Variables in data set `ABC':
- dataset name    type format flength fdigits iformat iflength ifdigits
-     ABC    X numeric   DATE       7       0                0        0
-     ABC    Y numeric  RFMTA       0       0                0        0
-              label nobs
-                       4
- character variable    4
-
-Variables in data set `FORMATS':
- dataset     name      type format flength fdigits iformat iflength ifdigits
- FORMATS  FMTNAME character              0       0                0        0
- FORMATS    START character              0       0                0        0
- FORMATS      END character              0       0                0        0
- FORMATS    LABEL character              0       0                0        0
- FORMATS      MIN   numeric              0       0                0        0
- FORMATS      MAX   numeric              0       0                0        0
- FORMATS  DEFAULT   numeric              0       0                0        0
- FORMATS   LENGTH   numeric              0       0                0        0
- FORMATS     FUZZ   numeric              0       0                0        0
- FORMATS   PREFIX character              0       0                0        0
- FORMATS     MULT   numeric              0       0                0        0
- FORMATS     FILL character              0       0                0        0
- FORMATS   NOEDIT   numeric              0       0                0        0
- FORMATS     TYPE character              0       0                0        0
- FORMATS    SEXCL character              0       0                0        0
- FORMATS    EEXCL character              0       0                0        0
- FORMATS      HLO character              0       0                0        0
- FORMATS   DECSEP character              0       0                0        0
- FORMATS  DIG3SEP character              0       0                0        0
- FORMATS DATATYPE character              0       0                0        0
- FORMATS LANGUAGE character              0       0                0        0
- label nobs
-          3
-          3
-          3
-          3
-          3
-          3
-          3
-          3
-          3
-          3
-          3
-          3
-          3
-          3
-          3
-          3
-          3
-          3
-          3
-          3
-          3
-
-
+wrt.xp> ## Not run: 
+wrt.xp> ##D lookup.xport(tmp)
+wrt.xp> ## End(Not run)
+wrt.xp> 
 wrt.xp> ## reload the data
-wrt.xp> xxx.abc <- read.xport("xxx.dat")
+wrt.xp> xxx.abc <- read.xport(tmp)
 
 wrt.xp> ## and look at it
 wrt.xp> xxx.abc
@@ -950,7 +879,7 @@ wrt.xp> xxx.abc
 4       <NA>    *
 
 wrt.xp> ## Check the label and type
-wrt.xp> label(xxx.abc)
+wrt.xp> Hmisc::label(xxx.abc)
                    X                    Y 
                   "" "character variable" 
 
@@ -968,4 +897,4 @@ wrt.xp>
 > 
 > proc.time()
    user  system elapsed 
-  0.709   0.045   0.744 
+  0.742   0.051   0.782 
