@@ -20,6 +20,8 @@ Type 'q()' to quit R.
 > library(SASxport)
 > Sys.setenv("TZ"="GMT")
 > 
+> set.seed(42)
+> 
 > # run the examples, comparing output
 > example(SASformat)
 
@@ -897,4 +899,4 @@ wrt.xp>
 > 
 > proc.time()
    user  system elapsed 
-  0.742   0.051   0.782 
+  0.773   0.055   0.816 
