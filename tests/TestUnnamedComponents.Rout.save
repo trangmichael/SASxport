@@ -1425,9 +1425,7 @@ $DATA2
 
 > 
 > ### Check that we catch invalid parameters
-> failure <- try( write.xport(5,"a.xpt") )             #10.a
-Error in write.xport(5, "a.xpt") : 
-  '5', 'a.xpt' are not data.frame objects.
+> failure <- try( write.xport(5,"a.xpt"), silent = TRUE )             #10.a
 > stopifnot( "try-error" %in% class(failure) ) #10.b
 > (tmp <- read.xport("a.xpt"))                         #10.c
 $DATA1
@@ -1539,9 +1537,7 @@ $DATA2
 100 0.823852539 0.12452227 0.845681194 0.08775397 0.15969781 0.854058568
 
 > 
-> failure <- try( write.xport(list(a=5,b=6),"a.xpt") ) #11.a
-Error in write.xport(list(a = 5, b = 6), "a.xpt") : 
-  'list(a = 5, b = 6)', 'a.xpt' are not data.frame objects.
+> failure <- try( write.xport(list(a=5,b=6),"a.xpt"), silent = TRUE ) #11.a
 > stopifnot( "try-error" %in% class(failure) ) #11.b
 > (tmp <- read.xport("a.xpt"))                         #10.c
 $DATA1

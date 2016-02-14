@@ -47,11 +47,11 @@ lookup.xport("a.xpt")            #9.b
 (tmp <- read.xport("a.xpt"))     #9.c
 
 ### Check that we catch invalid parameters
-failure <- try( write.xport(5,"a.xpt") )             #10.a
+failure <- try( write.xport(5,"a.xpt"), silent = TRUE )             #10.a
 stopifnot( "try-error" %in% class(failure) ) #10.b
 (tmp <- read.xport("a.xpt"))                         #10.c
 
-failure <- try( write.xport(list(a=5,b=6),"a.xpt") ) #11.a
+failure <- try( write.xport(list(a=5,b=6),"a.xpt"), silent = TRUE ) #11.a
 stopifnot( "try-error" %in% class(failure) ) #11.b
 (tmp <- read.xport("a.xpt"))                         #10.c
 
