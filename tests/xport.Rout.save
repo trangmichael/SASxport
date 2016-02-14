@@ -105,7 +105,6 @@ Variables in data set `W.TEST':
  3rd Qu.:40446  
  Max.   :40453  
 > 
-> q()
 > proc.time()
    user  system elapsed 
   0.427   0.033   0.448 
