@@ -1,8 +1,8 @@
 Package: SASxport
-Title: Read and Write SAS XPORT Files
+Title: Read and Write 'SAS' 'XPORT' Files
 Version: 1.5.1
 Description: Functions for reading, listing
-    the contents of, and writing SAS xport format files.
+    the contents of, and writing 'SAS' 'xport' format files.
     The functions support reading and writing of either
     individual data frames or sets of data frames.  Further,
     a mechanism has been provided for customizing how
@@ -26,7 +26,7 @@ Author: Unless otherwise noted, the contents of this package were written by
     the terms of the GNU General Public License, version 2.0 or later.
     --
     The files 'R/xport.R', 'src/SASxport.c', 'src/SASxport.h', and
-    'src/foreign.h' are copied or adapted from the R 'foreign' package
+    'src/foreign.h' are copied or adapted from the 'R' 'foreign' package
     created by Douglas M. Bates <bates@stat.wisc.edu> and Saikat DebRoy
     <saikat@stat.wisc.edu>, and are utilized and redistributed under the
     terms of the GNU General Public License, version 2.0 or later.
