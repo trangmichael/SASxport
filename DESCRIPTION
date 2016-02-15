@@ -1,6 +1,6 @@
 Package: SASxport
 Title: Read and Write 'SAS' 'XPORT' Files
-Version: 1.5.1
+Version: 1.5.2
 Description: Functions for reading, listing
     the contents of, and writing 'SAS' 'xport' format files.
     The functions support reading and writing of either
