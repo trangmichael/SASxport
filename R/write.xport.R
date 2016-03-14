@@ -197,12 +197,12 @@ write.xport <- function(...,
             # behavior we need now
             if(is.character(var)) {
               if ("keepNA" %in% names(as.list(args(nchar)))) {
-                varLen <- max(c(8,nchar(var, keepNA = FALSE) ) )
+                varLen <- max(c(20,nchar(var, keepNA = FALSE) ) )
               } else {
-                varLen <- max(c(8,nchar(var) ) )
+                varLen <- max(c(20,nchar(var) ) )
               }
             } else {
-              varLen <- 8
+              varLen <- 20
             }
 
             # fill in variable offset and length information
