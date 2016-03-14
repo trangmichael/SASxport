@@ -11,12 +11,12 @@ makeSASNames <- function(names, nchar=8, maxPasses=10, quiet=FALSE)
     names <- toupper(names)
     
     # Step 1: expand/truncate to 8 characters
-    tooLong <- nchar(names)>8
+    tooLong <- nchar(names)>nchar
     if (any(tooLong))
       {
         shortNames <- substr(as.character(names), 1, nchar)
         if(!quiet)
-          warning("Truncated ", sum(tooLong), " long names to 8 characters.")
+          warning("Truncated ", sum(tooLong), " long names to ", nchar," characters.")
       }
     else
       shortNames <- names
