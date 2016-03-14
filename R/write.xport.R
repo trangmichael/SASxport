@@ -93,7 +93,7 @@ write.xport <- function(...,
     #######
     ##
     scat("Ensure object names are valid and unique...\n")
-    names(dfList) <- dfNames <- makeSASNames(dfNames)
+    names(dfList) <- dfNames <- makeSASNames(dfNames, nchar=20)
     ##
     #######
 
@@ -154,7 +154,7 @@ write.xport <- function(...,
           }
 
 
-        colnames(dfList[[i]]) <- colnames(df) <- varNames <- makeSASNames(colnames(df))
+        colnames(dfList[[i]]) <- colnames(df) <- varNames <- makeSASNames(colnames(df), nchar=20)
 
         offsetTable <- data.frame("name"=varNames,
                                   "len"=rep(NA, length(varNames)),
